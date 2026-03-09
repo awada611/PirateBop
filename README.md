@@ -5,7 +5,7 @@ A lightweight audio player built in c with gtk-4 and miniaudio
 - cd PirateBop
 - make
 
-## Dependencies
+## Dependencies:
 
 Install on Debian/Ubuntu:
 - sudo apt install libgtk-4-dev libavformat-dev libavcodec-dev libavutil-dev
@@ -13,3 +13,9 @@ Install on Debian/Ubuntu:
 Install on Arch/Manjaro:
 - sudo pacman -S gtk4 ffmpeg
 
+## Usage:
+
+- PirateBop is portable, copy and paste into desired dir containing album or playlist and run:
+  ./PirateBop
+
+- Then play any MP3, WAV, or FLAC files present in  the directory
