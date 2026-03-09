@@ -1,0 +1,52 @@
+window {
+    background: linear-gradient(145deg, #0a1c1c 0%, #1a2f2f 100%);
+}
+button {
+    background: #34ebc0;
+    border-radius: 0px;
+    font-size: 28px; /* Only change - bigger text */
+    padding: 8px 12px;
+    min-width: 20px;
+    box-shadow: 0 2px 0 #1a5f4f;
+}
+
+button:hover {
+    background: #4fffd4;
+    border-color: #2bbaa0;
+    box-shadow: 0 2px 0 #248f7a;
+}
+
+button:active {
+    background: #2bbaa0;
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+label {
+    font-size: 20px;
+    color: white;
+}
+
+scale {
+    min-height: 20px;
+}
+
+scale trough {
+    background: #1a2f2f;
+    border: 1px solid #34ebc0;
+    border-radius: 4px;
+    min-height: 8px;
+}
+
+scale highlight {
+    background: linear-gradient(90deg, #34ebc0, #4fffd4);
+    border-radius: 4px;
+}
+
+scale slider {
+    background: #ffffff;
+    border: 2px solid #34ebc0;
+    border-radius: 10px;
+    min-width: 16px;
+    min-height: 16px;
+}
