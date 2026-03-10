@@ -19,3 +19,8 @@ Install on Arch/Manjaro:
   ./PirateBop
 
 - Then play any MP3, WAV, or FLAC files present in  the directory
+
+
+## Screenshot:
+
+<img width="910" height="477" alt="Screenshot_20260310_212807" src="https://github.com/user-attachments/assets/f042f15b-b9e5-438e-9c18-8c4227dd36b4" />
