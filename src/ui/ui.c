@@ -48,6 +48,9 @@ void update_song_info(){
 
 //song end
 gboolean end_song(){
+    bool end_playlist = playlist_is_ended();
+    if( end_playlist) return 0;
+
     bool end_song = song_is_ended();
     if(end_song) {
         next();

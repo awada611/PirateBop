@@ -1,3 +1,4 @@
+#include <stdatomic.h>
 #include <unistd.h>
 #define MINIAUDIO_IMPLEMENTATION
 
@@ -52,6 +53,11 @@ int get_position(){
 bool song_is_ended(){ // but the memory lingers on
     bool end_song = player->playback_end;
     return end_song;
+}
+
+bool playlist_is_ended(){
+    bool end_playlist = player->playlist_end;
+    return end_playlist;
 }
 
 int get_length(){
@@ -165,6 +171,14 @@ int update_playback(){
 
     int init_info = get_song_metainfo(filename, &song_info);
 
+    if(atomic_load(&player->shuffle)==true &&
+        (player->shuffled_array[player->shuffle_count] ==
+            player->shuffled_array[player->song_total-1])){
+                player->playlist_end = true;
+            } else if(player->current_index == ((player->song_total)-1)){
+                player->playlist_end = true;
+            }
+
     return 1;
 }
 
@@ -178,7 +192,7 @@ int play(){
         return 1;
     }
 
-    if(player->playback_stop){
+    if(player->playback_stop || player->playlist_end){
         ma_decoder_seek_to_pcm_frame(&decoder, player->frame);
         ma_device_start(&device);
         return 1;

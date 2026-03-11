@@ -19,6 +19,7 @@ typedef struct Player{
   bool is_playing;    // flag to declare player playing song
   bool playback_stop; // flag set when song is stopped
   bool playback_end;  // flag set when song ends naturally (reaches end frame)
+  bool playlist_end;  // flag set when playlist ends(Duhh!)
   int position;
   ma_uint64 frame;
   ma_uint64 total_frames;
@@ -31,6 +32,7 @@ extern MetaInfo* song_info;
 
 int get_position();
 bool song_is_ended();
+bool playlist_is_ended();
 int get_length();
 
 int shuffle_toggle();
