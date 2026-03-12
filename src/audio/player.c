@@ -96,6 +96,7 @@ void update_player_state(){
     player->playlist = get_song(player->current_index);
     player->playback_end = false;
     player->playback_stop = false;
+    player->playlist_end = false;
     player->is_playing = false;
     player->position=0;
     player->frame=0;
@@ -171,13 +172,6 @@ int update_playback(){
 
     int init_info = get_song_metainfo(filename, &song_info);
 
-    if(atomic_load(&player->shuffle)==true &&
-        (player->shuffled_array[player->shuffle_count] ==
-            player->shuffled_array[player->song_total-1])){
-                player->playlist_end = true;
-            } else if(player->current_index == ((player->song_total)-1)){
-                player->playlist_end = true;
-            }
 
     return 1;
 }
@@ -241,6 +235,17 @@ int stop(){
 void next_helper(){
     ma_device_stop(&device);
     update_playback();
+
+    if(atomic_load(&player->shuffle)==true &&
+        (player->shuffled_array[player->shuffle_count] ==
+            player->shuffled_array[player->song_total-1])){
+                player->playlist_end = true;
+            } else if((atomic_load(&player->shuffle)==false) &&
+                player->current_index == ((player->song_total-1))){
+                player->playlist_end = true;
+            }
+
+
     play();
 }
 
